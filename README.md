@@ -1,5 +1,5 @@
 # TSR NO AI
-TSR mod which disables AI players during exhibition races
+Mod for Team Sonic Racing (PC Steam version) which disables AI players for exhibition race modes
 
 # How to install
 * Start TSR, then run this program, it should notify you that the mod is activated.
