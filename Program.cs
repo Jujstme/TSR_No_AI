@@ -15,8 +15,6 @@ namespace TsrNoAi
 		
         private static int processHandle;
 		
-		private int ModuleMemorySize { get; set;}
-
 		public static void Main()
 		{
 			Application.EnableVisualStyles();
