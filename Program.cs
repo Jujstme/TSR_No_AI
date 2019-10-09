@@ -24,6 +24,12 @@ namespace TsrNoAi
 			
 			Process[] processList = Process.GetProcessesByName("GameApp_PcDx11_x64Final");
 			
+			if (processList.Length == 0)
+			{
+				MessageBox.Show("Please start the game first!", "TSR NO AI", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				Environment.Exit(0);
+			}
+
 			foreach (Process process in processList)
 			{
 				processHandle = OpenProcess(0x38, 0, process.Id);
@@ -40,13 +46,7 @@ namespace TsrNoAi
 									"running the correct version of the game!", "TSR NO AI", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     Environment.Exit(2);
                 }
-				
-				if (processList.Length == 0)
-				{
-					MessageBox.Show("Please start the game first!", "TSR NO AI", MessageBoxButtons.OK, MessageBoxIcon.Error);
-					Environment.Exit(0);
-				}
-				
+	
 				byte[] status = new byte[6];
 				int bytesRead = 0;
 				ReadProcessMemory(processHandle, 0x145B2A1FD, status, status.Length, bytesRead);
@@ -92,7 +92,6 @@ namespace TsrNoAi
 					"TSR NO AI patch has been removed!\n" +
 					"Enjoy your stock experience!", "TSR NO AI", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				}
-				
 			}
         }
     }
