@@ -78,6 +78,11 @@ namespace TsrNoAi
 				else
 				{
 					// Unpatching the game is the no AI patch was already applied
+					if(MessageBox.Show("It appears your game is already patched\n" +
+									   "Do you want to remove the patch and restore stock settings?", "TSR NO AI", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+					{
+					   Environment.Exit(0);
+					}
 					WriteProcessMemory(processHandle, 0x140C0AC80, new byte[] {0xFF, 0xFF, 0xFF, 0xFF}, 4, 0);
 					WriteProcessMemory(processHandle, 0x145B2A1FD, new byte[] {0x89, 0x88, 0x04, 0x02, 0x00, 0x00}, 6, 0);
 					
